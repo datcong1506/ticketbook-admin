@@ -20,5 +20,10 @@ export default antfu({
     'vue/block-order': ['error', {
       order: ['template', 'script', 'style'],
     }],
+    'unused-imports/no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_', caughtErrors: 'none' }],
+    'ts/consistent-type-definitions': 'off',
+    'brace-style': ['error', '1tbs', { allowSingleLine: true }],
+    'curly': ['error', 'all'],
+    'max-statements-per-line': ['error', { max: 1 }],
   },
 })
