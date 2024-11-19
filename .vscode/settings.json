@@ -1,4 +1,7 @@
 {
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  "vue.features.componentAutoImport": true,
+  "vue.features.componentNameCase": "kebab",
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,
   "editor.formatOnSave": false,
@@ -46,5 +49,6 @@
     "scss",
     "pcss",
     "postcss"
-  ]
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2020",
     "jsx": "preserve",
-    "lib": ["ES2020", "DOM", "DOM.Iterable", "ScriptHost"],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "moduleDetection": "force",
     "useDefineForClassFields": true,
     "baseUrl": "./",
@@ -13,7 +13,8 @@
       "@views/*": ["./src/views/*"],
       "@utils/*": ["./src/utils/*"],
       "@hooks/*": ["./src/hooks/*"],
-      "@api/*": ["./src/api/*"]
+      "@api/*": ["./src/api/*"],
+      "@assets/*": ["./src/assets/*"]
     },
     "types": ["vite/client", "vue"],
     "allowImportingTsExtensions": true,
@@ -26,5 +27,10 @@
     "skipLibCheck": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.ts"]
+  "vueCompilerOptions": {
+    "experimentalTemplateCompilerOptions": {
+      "strictTemplates": true
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "components.d.ts"]
 }
