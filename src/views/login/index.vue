@@ -26,8 +26,13 @@
 <script setup lang="ts">
 import type { FormInstance, Rule } from 'ant-design-vue/es/form'
 import adminAPI from '@api/admin'
+import useAuth from '@hooks/useAuth'
 import { notification } from 'ant-design-vue'
 import { reactive, ref, watch } from 'vue'
+import { useRouter } from 'vue-router'
+
+const { setToken } = useAuth()
+const router = useRouter()
 
 const formRef = ref<FormInstance>()
 const isFormInvalid = ref(true)
@@ -52,8 +57,10 @@ const rules: Record<string, Rule[]> = {
 
 async function onLogin() {
   try {
-    const res = await adminAPI.login(form)
-    console.log(res)
+    const res = await adminAPI.login<{ token: string }>(form)
+
+    setToken(res.data.token)
+    router.push('/')
   } catch (_) {
     notification.error({
       duration: 2,

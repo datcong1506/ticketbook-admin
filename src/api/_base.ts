@@ -1,10 +1,10 @@
 import type { AxiosInstance } from 'axios'
+import useAuth from '@hooks/useAuth'
 import axios from 'axios'
 
+const { getToken } = useAuth()
 export type TDataAxios<TRes = any> = {
-  data: {
-    data: TRes
-  }
+  data: TRes
 }
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
@@ -19,8 +19,7 @@ const apiClient: AxiosInstance = axios.create({
 
 apiClient.interceptors.request.use(
   (config) => {
-    // TODO: You can add a token here if required
-    const token = localStorage.getItem('token')
+    const token = getToken()
     if (token) {
       config.headers.Authorization = `Bearer ${token}`
     }

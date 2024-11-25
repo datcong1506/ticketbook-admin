@@ -7,7 +7,7 @@ export type TLoginForm = {
 }
 
 const adminAPI = {
-  login: (adminForm: TLoginForm): Promise<TDataAxios> => {
+  login: <Res>(adminForm: TLoginForm): Promise<TDataAxios<Res>> => {
     const url = '/admin/login'
     return apiClient.post(url, adminForm)
   },
