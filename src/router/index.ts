@@ -16,10 +16,10 @@ const routes: RouteRecordRaw[] = [
   { path: '/login', component: LoginView, name: 'login' },
   {
     path: '/',
-    redirect: { name: 'position' },
+    redirect: { name: 'cinema' },
     component: LayoutView,
     children: [
-      { path: 'cinema', name: 'position', component: PositionView, meta: { title: 'Cinema' } },
+      { path: 'cinema', name: 'cinema', component: PositionView, meta: { title: 'Cinema' } },
       { path: 'room', name: 'room', component: RoomView, meta: { title: 'Room' } },
       { path: 'seat', name: 'seat', component: SeatView, meta: { title: 'Seat' } },
       { path: 'film', name: 'film', component: FilmView, meta: { title: 'Film' } },

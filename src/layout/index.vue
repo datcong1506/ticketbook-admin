@@ -3,7 +3,7 @@
     <Sidebar />
     <div class="flex flex-grow flex-col">
       <Header />
-      <div>
+      <div class="w-full h-[calc(100%_-_64px)] p-6 overflow-y-auto">
         <RouterView />
       </div>
     </div>

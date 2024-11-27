@@ -30,7 +30,7 @@ const menuItems = [
   {
     title: 'Cinema',
     icon: Cinema,
-    name: 'position',
+    name: 'cinema',
   },
   {
     title: 'Room',
