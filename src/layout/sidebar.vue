@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[250px] h-full border-r-[#454545] border-r flex flex-col bg-[rgba(44,44,44,.5)!important]">
+  <div class="w-[250px] min-w-[250px] h-full border-r-[#454545] border-r flex flex-col bg-[rgba(44,44,44,.5)!important]">
     <div class="h-[64px] w-full flex items-center justify-center text-2xl font-bold text-[#21ea7f]">
       Ticket book
     </div>
