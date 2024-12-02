@@ -1,7 +1,9 @@
 import type { AxiosInstance } from 'axios'
+import useLoading from '@/hooks/useLoading'
 import useAuth from '@hooks/useAuth'
 import axios from 'axios'
 
+const { showLoading, hideLoading } = useLoading()
 const { getToken } = useAuth()
 export type TDataAxios<TRes = any> = {
   data: TRes
@@ -19,6 +21,7 @@ const apiClient: AxiosInstance = axios.create({
 
 apiClient.interceptors.request.use(
   (config) => {
+    showLoading()
     const token = getToken()
     if (token) {
       config.headers.Authorization = `${token}`
@@ -31,9 +34,12 @@ apiClient.interceptors.request.use(
 )
 
 apiClient.interceptors.response.use(
-  response => response,
+  (response) => {
+    hideLoading()
+    return response
+  },
   (error) => {
-    // TODO: Handle errors here, for example logging out the user if the token is expired
+    hideLoading()
     return Promise.reject(error)
   },
 )
