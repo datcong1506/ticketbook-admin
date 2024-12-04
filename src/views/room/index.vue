@@ -78,7 +78,7 @@ const columns = [
 ]
 
 const cinemaList = ref<any[]>([])
-const cinemaSelect = ref<string>('')
+const cinemaSelect = ref<string | null>(null)
 const data = ref<any[]>([])
 
 watch(cinemaSelect, async (value) => {
