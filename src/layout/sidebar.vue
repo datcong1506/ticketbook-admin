@@ -4,7 +4,7 @@
       Ticket book
     </div>
     <div class="flex-grow flex flex-col gap-1">
-      <div v-for="item of menuItems" :key="item.name" class="h-[64px] flex items-center gap-3 pl-6 cursor-pointer item-menu" :class="{ 'item-menu__active': route.name === item.name }" @click="handleRoute(item)">
+      <div v-for="item of menuItems" :key="item.name" class="h-[64px] flex items-center gap-3 pl-6 cursor-pointer item-menu" :class="{ 'item-menu__active': route.name === item.name || route.meta.activeRoute === item.name }" @click="handleRoute(item)">
         <component :is="item.icon" style="width: 24px; height: 24px; fill: white;" />
         <div class="text-[rgba(255,255,255,0.65)] text-sm item-menu__text">
           {{ item.title }}
@@ -19,7 +19,7 @@ import Film from '@assets/film.svg?component'
 import Cinema from '@assets/position.svg?component'
 import Room from '@assets/room.svg?component'
 import Schedule from '@assets/schedule.svg?component'
-import Seat from '@assets/seat.svg?component'
+// import Seat from '@assets/seat.svg?component'
 import Ticket from '@assets/ticket.svg?component'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -37,11 +37,11 @@ const menuItems = [
     icon: Room,
     name: 'room',
   },
-  {
-    title: 'Seat',
-    icon: Seat,
-    name: 'seat',
-  },
+  // {
+  //   title: 'Seat',
+  //   icon: Seat,
+  //   name: 'seat',
+  // },
   {
     title: 'Film',
     icon: Film,

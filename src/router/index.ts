@@ -1,5 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router'
 import LayoutView from '@/layout/index.vue'
+import CreateFilm from '@/views/film/CreateFilm.vue'
 import CreateRoom from '@/views/room/CreateRoom.vue'
 import useAuth from '@hooks/useAuth'
 import FilmView from '@views/film/index.vue'
@@ -22,9 +23,10 @@ const routes: RouteRecordRaw[] = [
     children: [
       { path: 'cinema', name: 'cinema', component: PositionView, meta: { title: 'Cinema' } },
       { path: 'room', name: 'room', component: RoomView, meta: { title: 'Room' } },
-      { path: 'room/create', name: 'create-room', component: CreateRoom, meta: { title: 'Create room' } },
-      { path: 'seat', name: 'seat', component: SeatView, meta: { title: 'Seat' } },
+      { path: 'room/create', name: 'create-room', component: CreateRoom, meta: { title: 'Create room', activeRoute: 'room' } },
+      // { path: 'seat', name: 'seat', component: SeatView, meta: { title: 'Seat' } },
       { path: 'film', name: 'film', component: FilmView, meta: { title: 'Film' } },
+      { path: 'film/create', name: 'create-film', component: CreateFilm, meta: { title: 'Create film', activeRoute: 'film' } },
       { path: 'schedule', name: 'schedule', component: ScheduleView, meta: { title: 'Schedule' } },
       { path: 'ticket', name: 'ticket', component: TicketView, meta: { title: 'Ticket' } },
     ],
