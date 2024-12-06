@@ -12,7 +12,7 @@
         >
           <template v-for="c of cinemaList" :key="c._id">
             <a-select-option :value="c._id">
-              {{ c.name }}
+              {{ c.name }} - {{ c.location }}
             </a-select-option>
           </template>
         </a-select>
