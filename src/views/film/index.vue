@@ -19,7 +19,7 @@
         </template>
         <template v-if="column.title === 'Release'">
           <div>
-            {{ moment(value).format('DD/MM/YYYY') }}
+            {{ dayjs(value).format('DD/MM/YYYY') }}
           </div>
         </template>
         <template v-if="column.title === 'Actors'">
@@ -47,7 +47,7 @@
 <script lang="ts" setup>
 import filmApi from '@/api/film'
 import DeleteConfirm from '@/components/common/DeleteConfirm.vue'
-import moment from 'moment'
+import dayjs from 'dayjs'
 import { onBeforeMount, ref } from 'vue'
 
 const columns = [

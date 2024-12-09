@@ -1,10 +1,12 @@
 import type { TDataAxios } from '../_base'
 import apiClient from '../_base'
 
-type TFormSchedule = {
+export type TFormSchedule = {
   film: string
   room: string
   time: string
+  vipPrice: number
+  regularPrice: number
 }
 
 const scheduleApi = {
@@ -12,9 +14,9 @@ const scheduleApi = {
     const url = '/admin/cinema/showtime/getAll'
     return apiClient.get(url)
   },
-  create: (projectForm: TFormSchedule) => {
+  create: (scheduleForm: TFormSchedule) => {
     const url = '/admin/cinema/showtime/create'
-    return apiClient.post(url, projectForm)
+    return apiClient.post(url, scheduleForm)
   },
   delete: (id: string) => {
     const url = '/admin/cinema/showtime/delete'
