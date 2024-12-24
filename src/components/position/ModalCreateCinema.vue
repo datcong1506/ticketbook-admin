@@ -6,7 +6,17 @@
           <a-input v-model:value="formCinema.name" placeholder="Please input name cinema" />
         </a-form-item>
         <a-form-item name="location" label="Location" required>
-          <a-input v-model:value="formCinema.location" placeholder="Please input location cinema" />
+          <a-select
+            v-model:value="formCinema.location"
+            placeholder="Select location cinema"
+            allow-clear
+          >
+            <template v-for="c of locationList" :key="c">
+              <a-select-option :value="c">
+                {{ c }}
+              </a-select-option>
+            </template>
+          </a-select>
         </a-form-item>
         <div class="w-full flex gap-3">
           <a-form-item name="logo" label="Logo" required class="logo-field">
@@ -39,6 +49,7 @@ import FileInput from '../common/FileInput.vue'
 const emit = defineEmits<{
   createSuccess: []
 }>()
+const locationList = ['Hà Nội', 'TP. HCM']
 const modelValue = defineModel<boolean>()
 const initState = {
   name: '',

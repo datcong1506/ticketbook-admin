@@ -7,7 +7,7 @@ export type TFormFilm = {
   shortDescription: string
   actors: string[]
   duration: number
-  releaseDate?: string
+  releaseDate?: any
   thumb: string
   trailer: string
 }
@@ -16,6 +16,14 @@ const filmApi = {
   getAll: <Res>(): Promise<TDataAxios<Res>> => {
     const url = '/admin/cinema/film/getAll'
     return apiClient.get(url)
+  },
+  getOne: <Res>(id: string): Promise<TDataAxios<Res>> => {
+    const url = `/admin/cinema/film/get/${id}`
+    return apiClient.get(url)
+  },
+  updateOne: <Res>(id: string, data: any): Promise<TDataAxios<Res>> => {
+    const url = '/admin/cinema/film/update'
+    return apiClient.put(url, { id, ...data })
   },
   create: (projectForm: TFormFilm) => {
     const url = '/admin/cinema/film/create'

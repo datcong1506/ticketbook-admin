@@ -38,7 +38,9 @@
 import cinemaApi from '@/api/cinema'
 import ModalCreateCinema from '@/components/position/ModalCreateCinema.vue'
 import { onBeforeMount, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const data = ref<any[]>([])
 const openCreateCinema = ref(false)
 
@@ -77,7 +79,7 @@ onBeforeMount(async () => {
 })
 
 function onEditCinema(id: string): void {
-  console.log(id)
+  router.push(`edit-cinema/${id}`)
 }
 
 const openDeleteCinema = ref(false)

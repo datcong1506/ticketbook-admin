@@ -88,8 +88,8 @@
         <a-input v-model:value="formFilm.trailer" placeholder="Please input trailer film" />
       </a-form-item>
 
-      <a-button class="mt-5 w-[100px]" type="primary" @click="createFilm()">
-        Create
+      <a-button class="mt-5 w-[100px]" type="primary" @click="updateFilm()">
+        Update
       </a-button>
     </a-form>
   </div>
@@ -102,12 +102,13 @@ import FileInput from '@/components/common/FileInput.vue'
 import AddIcon from '@assets/add.svg?component'
 import CloseIcon from '@assets/close.svg?component'
 import { notification } from 'ant-design-vue'
-import { ref, watch } from 'vue'
-import { useRouter } from 'vue-router'
+import dayjs from 'dayjs'
+import { onBeforeMount, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 const genreList = ['Hành động', 'Kinh dị', 'Viễn tưởng', 'Lãng mạn', 'Hài hước', 'Phiêu lưu', 'Thần thoại', 'Hoạt hình', 'Tài liệu', 'Kịch tính', 'Chiến tranh', 'Thể thao', 'Nhạc kịch']
 const router = useRouter()
-
+const route = useRoute()
 const formFilm = ref<TFormFilm>({
   title: '',
   genre: undefined,
@@ -142,7 +143,32 @@ function onDeleteActor(index: number) {
   formFilm.value.actors.splice(index, 1)
 }
 
-async function createFilm() {
+async function getFilm() {
+  try {
+    const res = await filmApi.getOne<any>(route.params.id as string)
+    formFilm.value = {
+      title: res.data.title,
+      genre: res.data.genre,
+      shortDescription: res.data.shortDescription,
+      actors: res.data.actors,
+      duration: res.data.duration,
+      releaseDate: dayjs(res.data.releaseDate),
+      thumb: res.data.thumb,
+      trailer: res.data.trailer,
+    }
+
+    time.value.hours = Math.floor(res.data.duration / 3600)
+    time.value.minutes = Math.floor((res.data.duration - time.value.hours * 3600) / 60)
+    time.value.seconds = res.data.duration - time.value.hours * 3600 - time.value.minutes * 60
+  } catch (_) {
+  }
+}
+
+onBeforeMount(async () => {
+  await getFilm()
+})
+
+async function updateFilm() {
   const { title, genre, shortDescription, actors, duration, releaseDate, thumb } = formFilm.value
 
   if (!title || !genre || actors.some(a => !a) || !duration || !shortDescription || !releaseDate || !thumb) {
@@ -154,7 +180,7 @@ async function createFilm() {
   }
 
   try {
-    await filmApi.create({
+    await filmApi.updateOne(route.params.id as string, {
       ...formFilm.value,
     })
 
@@ -164,20 +190,20 @@ async function createFilm() {
 }
 </script>
 
-<style lang="scss" scoped>
-.icon {
-    cursor: pointer;
-    border-radius: 100%;
-    overflow: hidden;
-}
-.icon:hover {
-    background-color: rgb(168, 167, 167);
-    svg {
-        stroke: white;
-    }
-}
+  <style lang="scss" scoped>
+  .icon {
+      cursor: pointer;
+      border-radius: 100%;
+      overflow: hidden;
+  }
+  .icon:hover {
+      background-color: rgb(168, 167, 167);
+      svg {
+          stroke: white;
+      }
+  }
 
-.logo-field {
-  width: 160px;
-}
-</style>
+  .logo-field {
+    width: 160px;
+  }
+  </style>
