@@ -5,7 +5,17 @@
         <a-input v-model:value="formCinema.name" placeholder="Please input name cinema" />
       </a-form-item>
       <a-form-item name="location" label="Location" required>
-        <a-input v-model:value="formCinema.location" placeholder="Please input location cinema" />
+        <a-select
+          v-model:value="formCinema.location"
+          placeholder="Select location cinema"
+          allow-clear
+        >
+          <template v-for="c of locationList" :key="c">
+            <a-select-option :value="c">
+              {{ c }}
+            </a-select-option>
+          </template>
+        </a-select>
       </a-form-item>
       <div class="w-full flex gap-3">
         <a-form-item name="logo" label="Logo" required class="logo-field">
@@ -30,6 +40,7 @@ import cinemaApi from '@/api/cinema'
 import { onBeforeMount, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
+const locationList = ['Hà Nội', 'TP. HCM']
 const route = useRoute()
 const router = useRouter()
 const formCinema = ref({ name: '', location: '', logo: '', description: '' })
