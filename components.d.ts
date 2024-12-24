@@ -27,7 +27,6 @@ declare module 'vue' {
     ATable: typeof import('ant-design-vue/es')['Table']
     ATag: typeof import('ant-design-vue/es')['Tag']
     ATextarea: typeof import('ant-design-vue/es')['Textarea']
-    AUpload: typeof import('ant-design-vue/es')['Upload']
     DeleteConfirm: typeof import('./src/components/common/DeleteConfirm.vue')['default']
     FileInput: typeof import('./src/components/common/FileInput.vue')['default']
     ModalCreateCinema: typeof import('./src/components/position/ModalCreateCinema.vue')['default']

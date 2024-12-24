@@ -19,8 +19,7 @@ import Film from '@assets/film.svg?component'
 import Cinema from '@assets/position.svg?component'
 import Room from '@assets/room.svg?component'
 import Schedule from '@assets/schedule.svg?component'
-// import Seat from '@assets/seat.svg?component'
-import Ticket from '@assets/ticket.svg?component'
+import User from '@assets/user.svg?component'
 import { useRoute, useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -52,10 +51,15 @@ const menuItems = [
     icon: Schedule,
     name: 'schedule',
   },
+  // {
+  //   title: 'Ticket',
+  //   icon: Ticket,
+  //   name: 'ticket',
+  // },
   {
-    title: 'Ticket',
-    icon: Ticket,
-    name: 'ticket',
+    title: 'User',
+    icon: User,
+    name: 'user',
   },
 ]
 

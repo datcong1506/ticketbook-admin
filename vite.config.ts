@@ -1,9 +1,15 @@
+// @ts-nocheck
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import vue from '@vitejs/plugin-vue'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import svgLoader from 'vite-svg-loader'
+
+const __filename = fileURLToPath(import.meta.url)
+
+const __dirname = path.dirname(__filename)
 
 // https://vite.dev/config/
 export default defineConfig({

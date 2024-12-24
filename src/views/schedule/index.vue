@@ -25,8 +25,8 @@
         </template>
         <template v-if="column.title === 'Action'">
           <div class="flex gap-3">
-            <a-button>
-              Edit
+            <a-button @click="$router.push(`ticket-schedule/${record._id}`)">
+              Show ticket
             </a-button>
             <a-button danger @click="onDeleteSchedule(record._id)">
               Delete

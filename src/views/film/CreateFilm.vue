@@ -16,6 +16,7 @@
           v-model:value="formFilm.genre"
           placeholder="Select film genre"
           allow-clear
+          mode="multiple"
         >
           <template v-for="c of genreList" :key="c">
             <a-select-option :value="c">

@@ -12,6 +12,11 @@
             <img :src="value">
           </div>
         </template>
+        <template v-if="column.title === 'Genre'">
+          <div>
+            {{ value.join(",") }}
+          </div>
+        </template>
         <template v-if="column.title === 'Duration'">
           <div>
             {{ value / 60 }} minutes

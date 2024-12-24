@@ -3,14 +3,16 @@ import LayoutView from '@/layout/index.vue'
 import CreateFilm from '@/views/film/CreateFilm.vue'
 import CreateRoom from '@/views/room/CreateRoom.vue'
 import CreateSchedule from '@/views/schedule/CreateSchedule.vue'
+import TicketSchedule from '@/views/schedule/TicketSchedule.vue'
+import CreateUser from '@/views/user/CreateUser.vue'
 import useAuth from '@hooks/useAuth'
 import FilmView from '@views/film/index.vue'
 import LoginView from '@views/login/index.vue'
 import PositionView from '@views/position/index.vue'
 import RoomView from '@views/room/index.vue'
 import ScheduleView from '@views/schedule/index.vue'
-import SeatView from '@views/seat/index.vue'
 import TicketView from '@views/ticket/index.vue'
+import UserView from '@views/user/index.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const { isAuth } = useAuth()
@@ -31,6 +33,9 @@ const routes: RouteRecordRaw[] = [
       { path: 'schedule', name: 'schedule', component: ScheduleView, meta: { title: 'Schedule' } },
       { path: 'schedule/create', name: 'create-schedule', component: CreateSchedule, meta: { title: 'Create schedule', activeRoute: 'schedule' } },
       { path: 'ticket', name: 'ticket', component: TicketView, meta: { title: 'Ticket' } },
+      { path: 'user', name: 'user', component: UserView, meta: { title: 'User' } },
+      { path: 'create-user', name: 'create-user', component: CreateUser, meta: { title: 'User', activeRoute: 'user' } },
+      { path: 'ticket-schedule/:id', name: 'ticket-schedule', component: TicketSchedule, meta: { title: 'Ticket', activeRoute: 'schedule' } },
     ],
   },
 ]

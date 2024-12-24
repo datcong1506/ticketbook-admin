@@ -14,6 +14,10 @@ const scheduleApi = {
     const url = '/admin/cinema/showtime/getAll'
     return apiClient.get(url)
   },
+  getSchedule: <Res>(id: string): Promise<TDataAxios<Res>> => {
+    const url = `/admin/cinema/showtime/get/${id}`
+    return apiClient.get(url)
+  },
   create: (scheduleForm: TFormSchedule) => {
     const url = '/admin/cinema/showtime/create'
     return apiClient.post(url, scheduleForm)
