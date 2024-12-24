@@ -1,6 +1,8 @@
 import type { RouteRecordRaw } from 'vue-router'
 import LayoutView from '@/layout/index.vue'
 import CreateFilm from '@/views/film/CreateFilm.vue'
+import EditCinema from '@/views/film/EditCinema.vue'
+import EditFilm from '@/views/film/EditFilm.vue'
 import CreateRoom from '@/views/room/CreateRoom.vue'
 import CreateSchedule from '@/views/schedule/CreateSchedule.vue'
 import TicketSchedule from '@/views/schedule/TicketSchedule.vue'
@@ -25,11 +27,13 @@ const routes: RouteRecordRaw[] = [
     component: LayoutView,
     children: [
       { path: 'cinema', name: 'cinema', component: PositionView, meta: { title: 'Cinema' } },
+      { path: 'edit-cinema/:id', name: 'edit-cinema', component: EditCinema, meta: { title: 'Edit cinema', activeRoute: 'cinema' } },
       { path: 'room', name: 'room', component: RoomView, meta: { title: 'Room' } },
       { path: 'room/create', name: 'create-room', component: CreateRoom, meta: { title: 'Create room', activeRoute: 'room' } },
       // { path: 'seat', name: 'seat', component: SeatView, meta: { title: 'Seat' } },
       { path: 'film', name: 'film', component: FilmView, meta: { title: 'Film' } },
       { path: 'film/create', name: 'create-film', component: CreateFilm, meta: { title: 'Create film', activeRoute: 'film' } },
+      { path: 'edit-film/:id', name: 'edit-film', component: EditFilm, meta: { title: 'Edit film', activeRoute: 'film' } },
       { path: 'schedule', name: 'schedule', component: ScheduleView, meta: { title: 'Schedule' } },
       { path: 'schedule/create', name: 'create-schedule', component: CreateSchedule, meta: { title: 'Create schedule', activeRoute: 'schedule' } },
       { path: 'ticket', name: 'ticket', component: TicketView, meta: { title: 'Ticket' } },

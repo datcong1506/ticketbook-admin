@@ -34,8 +34,7 @@
         </template>
         <template v-if="column.title === 'Action'">
           <div class="flex gap-3">
-            <a-button>Schedule film</a-button>
-            <a-button>
+            <a-button @click="$router.push(`/edit-film/${record._id}`)">
               Edit
             </a-button>
             <a-button danger @click="onDeleteFilm(record._id)">
